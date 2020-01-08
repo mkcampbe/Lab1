@@ -1,13 +1,13 @@
 ---
 title: "Homework 1"
-author: "Kristi Gdanetz MacCready"
+author: "Mary Kate Campbell"
 date: "01/08/2020"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_knit$set(root.dir = "~/Documents/UMBio201/Lab1/")
+knitr::opts_knit$set(root.dir = "~/Documents/Lab1/")
 ```
 
 # Interacting with R
@@ -252,11 +252,11 @@ We’ve seen that vectors can be of types character, numeric (or double), intege
 
 Create each of the vectors in the code chunck below. In the console type class() or typeof() with each vector as an argument to check the data type of your objects. Write the result as a comment: 
 ```{r}
-num_char <- c(1, 2, 3, "a") # class = ?
-num_logical <- c(1, 2, 3, TRUE) # class = ?
-char_logical <- c("a", "b", "c", TRUE) # class = ?
-tricky <- c(1, 2, 3, "4") # class = ?
-# How do you explain the result for tricky? 
+num_char <- c(1, 2, 3, "a") # class = character
+num_logical <- c(1, 2, 3, TRUE) # class = numeric
+char_logical <- c("a", "b", "c", TRUE) # class = character
+tricky <- c(1, 2, 3, "4") # class = character
+# How do you explain the result for tricky? Tricky is a character data type because if you include a character in the vector, then the whole vector will be the character data type.
 ```
 
 How many values in combined_logical are "TRUE" (as a character) in the following example:
@@ -264,31 +264,36 @@ How many values in combined_logical are "TRUE" (as a character) in the following
 num_logical <- c(1, 2, 3, TRUE)
 char_logical <- c("a", "b", "c", TRUE)
 combined_logical <- c(num_logical, char_logical)
-# type answer here
+# 1
 ```
 
 # Question 2
 You’ve probably noticed that objects of different types get converted into a single, shared type within a vector. In R, we call converting objects from one class into another class coercion. These conversions happen according to a hierarchy, whereby some types get preferentially coerced into other types. What is the order of the hierarchy? 
 
-<type answer here>
+<character, numeric, logical>
 
 # Question 3
 ```{r}
 # Build a vector of the study semesters (Winter2015  through Winter2020): 
+study_sem <- c("Winter 2015","Fall 2015","Winter 2016","Fall 2016","Winter 2017","Fall 2017","Winter 2018","Fall 2018","Winter 2019","Fall 2019")
 
 # Build a vector of the supplements consumed (see powerpoint slides): 
-
-# What type are each of these? 
+study_supp <- c("BRMPS", "HiMaize260", "inulin", "arabinoxylan", "psyllium", "BRMPS + psyllium", "BRMPS + accessible corn starch", "accessible corn starch", "resistant banana starch", "transition on HiMaize260/switch to BRMPS", "BRMPS + HiMaize260", "LOODAAT potato starch", "oat", "rice")
+# What type are each of these? Characters
 
 ```
 
 # Question 4
 ```{r}
 # Build a vector of the typical age of college students:
+college_age <- c(18,19,20,21,22)
+college_age <- as.numeric(college_age)
 
 # Confirm this is numeric
+is.numeric(college_age)
 
 # Convert this vector to character:
+as.character(college_age)
 
 ```
 
@@ -297,9 +302,15 @@ You’ve probably noticed that objects of different types get converted into a s
 # Calculate the mean pH for each participant below, round to 2 digits. Evaluate if these values equal. Hint: check the type of each vector. 
 
 pH_1 <- c("7.75", "6", "7.5", "8", "7.75")
+pH_1 <- as.numeric(pH_1)
+round(mean(pH_1), 2)
+
 
 pH_2 <- c("8", "7.25", "7.25", "7.75", "7.5", "7.25")
+pH_2 <- as.numeric(pH_2)
+round(mean(pH_2), 2) 
 
+mean(pH_1) == mean(pH_2) #these mean values are not equal
 ```
 
 
